@@ -1,7 +1,12 @@
 const util = require('./util');
 
+// eslint-disable-next-line
+const bigNumberStringEndpointId = '0x5880c06932463a4e8d9ffe87ac43db110767fe4f47f669990284f7ced6b73a69';
+// eslint-disable-next-line
+const bigNumberRawEndpointId = '0x67bd2cbbdd1fc9a7602e1009b4261ebea23a3b1135092756b964a69cc3ecab48';
+
 module.exports = {
   providerId:
     util.readFromReceipt('providerId') || '0x23722bcdd23e559d7151db284f290fadde9f3cb725859d476ef1f16ab315355e',
-  endpointId: '0xf466b8feec41e9e50815e0c9dca4db1ff959637e564bb13fefa99e9f9f90453c',
+  endpointId: bigNumberStringEndpointId,
 };
