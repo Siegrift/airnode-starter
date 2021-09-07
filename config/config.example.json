@@ -2,47 +2,23 @@
   "ois": [
     {
       "oisFormat": "1.0.0",
-      "title": "CoinGecko-starter-example",
+      "title": "Large-number-starter-example",
       "version": "1.0.0",
       "apiSpecifications": {
         "servers": [
           {
-            "url": "https://api.coingecko.com/api/v3"
+            "url": "https://airnode-mocked-api-netlify.netlify.app"
           }
         ],
         "paths": {
-          "/coins/{id}": {
+          "/.netlify/functions/big-number": {
             "get": {
-              "parameters": [
-                {
-                  "in": "path",
-                  "name": "id"
-                },
-                {
-                  "in": "query",
-                  "name": "localization"
-                },
-                {
-                  "in": "query",
-                  "name": "tickers"
-                },
-                {
-                  "in": "query",
-                  "name": "market_data"
-                },
-                {
-                  "in": "query",
-                  "name": "community_data"
-                },
-                {
-                  "in": "query",
-                  "name": "developer_data"
-                },
-                {
-                  "in": "query",
-                  "name": "sparkline"
-                }
-              ]
+              "parameters": []
+            }
+          },
+          "/.netlify/functions/big-number-raw": {
+            "get": {
+              "parameters": []
             }
           }
         },
@@ -53,55 +29,12 @@
       },
       "endpoints": [
         {
-          "name": "coinMarketData",
+          "name": "bigNumberValue",
           "operation": {
             "method": "get",
-            "path": "/coins/{id}"
+            "path": "/.netlify/functions/big-number"
           },
-          "fixedOperationParameters": [
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "localization"
-              },
-              "value": "false"
-            },
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "tickers"
-              },
-              "value": "false"
-            },
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "market_data"
-              },
-              "value": "true"
-            },
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "community_data"
-              },
-              "value": "false"
-            },
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "developer_data"
-              },
-              "value": "false"
-            },
-            {
-              "operationParameter": {
-                "in": "query",
-                "name": "sparkline"
-              },
-              "value": "false"
-            }
-          ],
+          "fixedOperationParameters": [],
           "reservedParameters": [
             {
               "name": "_type",
@@ -109,22 +42,37 @@
             },
             {
               "name": "_path",
-              "fixed": "market_data.current_price.usd"
+              "fixed": "value"
             },
             {
               "name": "_times",
               "fixed": "1000000"
             }
           ],
-          "parameters": [
+          "parameters": []
+        },
+        {
+          "name": "bigNumberValueRaw",
+          "operation": {
+            "method": "get",
+            "path": "/.netlify/functions/big-number-raw"
+          },
+          "fixedOperationParameters": [],
+          "reservedParameters": [
             {
-              "name": "coinId",
-              "operationParameter": {
-                "in": "path",
-                "name": "id"
-              }
+              "name": "_type",
+              "fixed": "int256"
+            },
+            {
+              "name": "_path",
+              "fixed": "value"
+            },
+            {
+              "name": "_times",
+              "fixed": "1000000"
             }
-          ]
+          ],
+          "parameters": []
         }
       ]
     }
@@ -132,13 +80,19 @@
   "triggers": {
     "request": [
       {
-        "endpointId": "0xf466b8feec41e9e50815e0c9dca4db1ff959637e564bb13fefa99e9f9f90453c",
-        "oisTitle": "CoinGecko-starter-example",
-        "endpointName": "coinMarketData"
+        "endpointId": "0x5880c06932463a4e8d9ffe87ac43db110767fe4f47f669990284f7ced6b73a69",
+        "oisTitle": "Large-number-starter-example",
+        "endpointName": "bigNumberValue"
+      },
+      {
+        "endpointId": "0x67bd2cbbdd1fc9a7602e1009b4261ebea23a3b1135092756b964a69cc3ecab48",
+        "oisTitle": "Large-number-starter-example",
+        "endpointName": "bigNumberValueRaw"
       }
     ]
   },
   "nodeSettings": {
+    "providerIdShort": "943ff79",
     "nodeVersion": "0.1.0",
     "cloudProvider": "aws",
     "region": "us-east-1",
@@ -146,19 +100,19 @@
     "logFormat": "json",
     "chains": [
       {
-        "id": "3",
+        "id": "4",
         "type": "evm",
         "providers": [
           {
             "name": "my-provider",
-            "url": "{FILL_PROVIDER_URL}"
+            "url": "https://rinkeby.infura.io/v3/1c7314d556ca48208f8c7e1fe33e19c6"
           }
         ],
         "contracts": {
-          "Airnode": "0xF8d32C3e53F7DA6e7CB82323f2cAB2159776b832",
-          "Convenience": "0x1552cF617711D6Da04E0EDC9e5C26eBbA08625ac"
+          "Airnode": "0xF9C39ec11055508BddA0Bc2a0234aBbbC09a3DeC",
+          "Convenience": "0xC9fb36DfAE95AD52E32ad48CCe9A1A169EfFaC6E"
         },
-        "providerAdminForRecordCreation": "{FILL_PROVIDER_ADMIN}"
+        "providerAdminForRecordCreation": "0xb0A20975f540656E331e2331C6caEc608Ff254fc"
       }
     ]
   },
