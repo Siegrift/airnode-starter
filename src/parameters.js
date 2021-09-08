@@ -8,5 +8,5 @@ const bigNumberRawEndpointId = '0x67bd2cbbdd1fc9a7602e1009b4261ebea23a3b11350927
 module.exports = {
   providerId:
     util.readFromReceipt('providerId') || '0x23722bcdd23e559d7151db284f290fadde9f3cb725859d476ef1f16ab315355e',
-  endpointId: bigNumberStringEndpointId,
+  endpointId: '0xc5bcd7fc3c655a87b32a0f2314b2bbf7b55b7c7c5d47bec4fc61863dd76d665a',
 };

@@ -7,18 +7,22 @@
       "apiSpecifications": {
         "servers": [
           {
-            "url": "https://airnode-mocked-api-netlify.netlify.app"
+            "url": "https://beta.heimdall.land/v2"
           }
         ],
         "paths": {
-          "/.netlify/functions/big-number": {
-            "get": {
-              "parameters": []
-            }
-          },
-          "/.netlify/functions/big-number-raw": {
-            "get": {
-              "parameters": []
+          "/coins/scores": {
+            "post": {
+              "parameters": [
+                {
+                  "in": "query",
+                  "name": "period"
+                },
+                {
+                  "in": "query",
+                  "name": "symbols"
+                }
+              ]
             }
           }
         },
@@ -29,10 +33,10 @@
       },
       "endpoints": [
         {
-          "name": "bigNumberValue",
+          "name": "scoresEndpoint",
           "operation": {
-            "method": "get",
-            "path": "/.netlify/functions/big-number"
+            "method": "post",
+            "path": "/coins/scores"
           },
           "fixedOperationParameters": [],
           "reservedParameters": [
@@ -42,37 +46,25 @@
             },
             {
               "name": "_path",
-              "fixed": "value"
-            },
-            {
-              "name": "_times",
-              "fixed": "1000000"
+              "fixed": "scores"
             }
           ],
-          "parameters": []
-        },
-        {
-          "name": "bigNumberValueRaw",
-          "operation": {
-            "method": "get",
-            "path": "/.netlify/functions/big-number-raw"
-          },
-          "fixedOperationParameters": [],
-          "reservedParameters": [
+          "parameters": [
             {
-              "name": "_type",
-              "fixed": "int256"
+              "name": "period",
+              "operationParameter": {
+                "in": "query",
+                "name": "period"
+              }
             },
             {
-              "name": "_path",
-              "fixed": "value"
-            },
-            {
-              "name": "_times",
-              "fixed": "1000000"
+              "name": "symbols",
+              "operationParameter": {
+                "in": "query",
+                "name": "symbols"
+              }
             }
-          ],
-          "parameters": []
+          ]
         }
       ]
     }
@@ -80,19 +72,14 @@
   "triggers": {
     "request": [
       {
-        "endpointId": "0x5880c06932463a4e8d9ffe87ac43db110767fe4f47f669990284f7ced6b73a69",
+        "endpointId": "0xc5bcd7fc3c655a87b32a0f2314b2bbf7b55b7c7c5d47bec4fc61863dd76d665a",
         "oisTitle": "Large-number-starter-example",
-        "endpointName": "bigNumberValue"
-      },
-      {
-        "endpointId": "0x67bd2cbbdd1fc9a7602e1009b4261ebea23a3b1135092756b964a69cc3ecab48",
-        "oisTitle": "Large-number-starter-example",
-        "endpointName": "bigNumberValueRaw"
+        "endpointName": "scoresEndpoint"
       }
     ]
   },
   "nodeSettings": {
-    "providerIdShort": "943ff79",
+    "providerIdShort": "7e8a72f",
     "nodeVersion": "0.1.0",
     "cloudProvider": "aws",
     "region": "us-east-1",

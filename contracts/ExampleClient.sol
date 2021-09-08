@@ -16,8 +16,7 @@ contract ExampleClient is AirnodeClient {
         bytes32 providerId,
         bytes32 endpointId,
         uint256 requesterInd,
-        address designatedWallet,
-        bytes calldata parameters
+        address designatedWallet
         )
         external
     {
@@ -28,7 +27,11 @@ contract ExampleClient is AirnodeClient {
             designatedWallet,
             address(this),
             this.fulfill.selector,
-            parameters
+            abi.encode(
+                bytes32("1SS"),
+                bytes32("period"), "30d",
+                bytes32("symbols"), "btc,eth,matic,link,uni,sushi,aave,chz,theta,rsr,grt,enj,ocean,kacy"
+            )
             );
         incomingFulfillments[requestId] = true;
     }
